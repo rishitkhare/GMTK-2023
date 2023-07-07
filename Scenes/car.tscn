@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bivcix561ruuq"]
+
+[ext_resource type="Script" path="res://Scripts/CarAI.gd" id="1_pytxt"]
+
+[node name="Car" type="Node2D"]
+script = ExtResource("1_pytxt")
