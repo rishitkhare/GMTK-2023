@@ -49,6 +49,9 @@ signal animate(input, velocity, grounded)
 @onready var rc_left : RayCast2D = $Raycasts/Left
 @onready var rc_right : RayCast2D = $Raycasts/Right
 
+func _ready():
+	GameManager.register_character(self)
+
 func _physics_process(_delta):
 	if(!frozen):
 		match movement_setting:
