@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdrd5tjf7acox"]
+
+[ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_unv6d"]
+[ext_resource type="Texture2D" uid="uid://d2htuvqdsc872" path="res://icon.svg" id="2_w63ux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fca7j"]
+size = Vector2(73, 71.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_unv6d")
+movement_setting = 0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.578125, 0.585938)
+texture = ExtResource("2_w63ux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fca7j")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Up" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, -42)
+
+[node name="Down" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(0, 42)
+collide_with_areas = true
+
+[node name="Downleft" type="RayCast2D" parent="Raycasts"]
+position = Vector2(-35, 0)
+target_position = Vector2(0, 42)
+collide_with_areas = true
+
+[node name="Downright" type="RayCast2D" parent="Raycasts"]
+position = Vector2(34, 0)
+target_position = Vector2(0, 42)
+collide_with_areas = true
+
+[node name="Left" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(-42, 0)
+
+[node name="Right" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(42, 0)
