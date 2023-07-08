@@ -80,6 +80,13 @@ offset_bottom = 52.0
 grow_horizontal = 2
 theme_override_styles/panel = ExtResource("4_krxn7")
 
+[node name="Anchor" type="Control" parent="Slot"]
+anchors_preset = 0
+offset_left = 58.45
+offset_top = 27.0
+offset_right = 208.45
+offset_bottom = 177.0
+
 [node name="DraggableButton" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 130.45
