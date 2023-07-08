@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b88gbmhbhoc7f"]
+
+[ext_resource type="Script" path="res://scripts/UI/drag_button.gd" id="1_ohvyy"]
+
+[node name="DraggableButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 130.45
+offset_top = 73.0
+offset_right = 130.45
+offset_bottom = 73.0
+script = ExtResource("1_ohvyy")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -21.0
+offset_right = 52.0
+offset_bottom = 19.0
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Turn left!"

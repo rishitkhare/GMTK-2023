@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmwccrwq2oq5g"]
+[gd_scene load_steps=4 format=3 uid="uid://bmwccrwq2oq5g"]
 
 [ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="1_gmxt7"]
 [ext_resource type="PackedScene" uid="uid://cgoav5v41i3j3" path="res://Scenes/UI/button.tscn" id="2_gsxab"]
 [ext_resource type="StyleBox" uid="uid://hh20hea1wtu6" path="res://UI-Resources/9rects/slot-9rect.tres" id="4_krxn7"]
-[ext_resource type="Script" path="res://scripts/UI/drag_button.gd" id="4_obn6j"]
 
 [node name="DriverControls" type="Control"]
 layout_mode = 3
@@ -86,22 +85,3 @@ offset_left = 58.45
 offset_top = 27.0
 offset_right = 208.45
 offset_bottom = 177.0
-
-[node name="DraggableButton" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 130.45
-offset_top = 73.0
-offset_right = 130.45
-offset_bottom = 73.0
-script = ExtResource("4_obn6j")
-
-[node name="Button" type="Button" parent="DraggableButton"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 0
-offset_left = -48.0
-offset_top = -21.0
-offset_right = 52.0
-offset_bottom = 19.0
-size_flags_horizontal = 3
-focus_mode = 0
-text = "Turn left!"

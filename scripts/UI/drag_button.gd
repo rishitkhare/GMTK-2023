@@ -14,7 +14,7 @@ func _input(event):
 	
 	# handles when to turn "dragging" off
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if dragging && event.pressed == true:
+		if dragging && event.pressed == false:
 			if (position - slot_position).length_squared() < 5625:
 				dragging = false
 				to_slot = true
@@ -29,7 +29,7 @@ func _process(_delta):
 	
 	if to_slot:
 		position += 0.06 * (slot_position - position)
-		modulate = Color(modulate.r + 0.1, modulate.r + 0.1, modulate.r + 0.1, modulate.a - 0.03)
+		modulate = Color(modulate.r + 0.1, modulate.r + 0.1, modulate.r + 0.1, modulate.a)
 		to_slot_frame -= 1
 		if (slot_position - position).length_squared() < 5 && to_slot_frame < 1:
 			stop_dragging()
@@ -46,8 +46,4 @@ func start_dragging(button):
 		visible = true
 	
 func stop_dragging():
-	selected = null
-	dragging = false
-	
-	$Button.text = "not visible"
-	visible = false
+	queue_free()
