@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cuplpmedyo3y"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cuplpmedyo3y"]
 
 [ext_resource type="Texture2D" uid="uid://enlpt565s48" path="res://tilesets/modern-city-assets/buildings.png" id="1_irpgw"]
 [ext_resource type="Texture2D" uid="uid://dcmujftfp3f4b" path="res://tilesets/modern-city-assets/street.png" id="2_w5eiy"]
 [ext_resource type="Texture2D" uid="uid://c4l8rjhd6aeyv" path="res://tilesets/modern-city-assets/fences.png" id="3_n0qg2"]
 [ext_resource type="Texture2D" uid="uid://ck6hlbj1y8s8m" path="res://tilesets/modern-city-assets/vehicles.png" id="4_gdqc2"]
+[ext_resource type="Texture2D" uid="uid://712uqwq0i686" path="res://tilesets/burger-asset/burger asset.png" id="5_qapec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3oy7b"]
 texture = ExtResource("1_irpgw")
@@ -612,8 +613,28 @@ texture = ExtResource("4_gdqc2")
 1:14/0 = 0
 2:14/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vtpo"]
+texture = ExtResource("5_qapec")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_3oy7b")
 sources/1 = SubResource("TileSetAtlasSource_vjiuh")
 sources/2 = SubResource("TileSetAtlasSource_p27pc")
 sources/3 = SubResource("TileSetAtlasSource_ijgui")
+sources/4 = SubResource("TileSetAtlasSource_6vtpo")
