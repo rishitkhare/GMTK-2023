@@ -1,7 +1,10 @@
 extends Node
 
-@onready var character : CharacterBody2D
+enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
+
+@onready var car : CharacterBody2D
 @onready var camera : Camera2D
+@onready var instructs = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +16,23 @@ func _ready():
 func _process(delta):
 	pass
 	
-func register_character(_character : CharacterBody2D):
-	self.character = _character
+func register_car(_car : CharacterBody2D):
+	self.car = _car
 
 func register_camera(_camera : Camera2D):
 	self.camera = _camera
+func register_character(_char : CharacterBody2D):
+	pass
+func add_instruct(instruct : INSTRUCTION):
+	instructs.append(instruct)
+	
+func grab_next_instruct()  -> INSTRUCTION:
+	if(instructs.size() == 0):
+		return INSTRUCTION.IDLE
+	else:
+		return instructs.pop_front()
+
+func time_penalty(penalty : float):
+	print("penalty")
+
+

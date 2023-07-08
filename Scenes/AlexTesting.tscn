@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnjitjtqvpa12"]
+
+[ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_rrg0i"]
+[ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="3_8n5sw"]
+[ext_resource type="PackedScene" uid="uid://c1ugfmr63gghh" path="res://Scenes/intersection.tscn" id="3_456s7"]
+
+[sub_resource type="GDScript" id="GDScript_r2mvg"]
+script/source = "extends Camera2D
+
+@onready var velocity : Vector2 = Vector2.ZERO
+@export var DRAG_FACTOR = 0.05
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	GameManager.register_camera(self)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#var target_position : Vector2 = GameManager.character.position
+	#var distance_left : Vector2 = target_position - self.position
+	#velocity = distance_left.normalized() * distance_left.length() * DRAG_FACTOR
+	#self.position += velocity
+	self.position = GameManager.car.position
+	
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fgw8"]
+size = Vector2(327.273, 144)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Car" parent="." instance=ExtResource("1_rrg0i")]
+z_index = 1
+position = Vector2(-460, 26)
+scale = Vector2(0.2, 0.2)
+motion_mode = 1
+waitTimeVar = 0.15
+speedUpAmt = 0.3
+speedDnAmt = 100.0
+startDir = Vector2(0, -1)
+turnDistance = 1.05
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-475, -114)
+script = SubResource("GDScript_r2mvg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DriverControls" parent="CanvasLayer" instance=ExtResource("3_8n5sw")]
+
+[node name="Node2D" parent="." instance=ExtResource("3_456s7")]
+position = Vector2(-487, -228)
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2(8.00003, -40)
+rotation = -3.14159
+scale = Vector2(0.44, -1)
+shape = SubResource("RectangleShape2D_7fgw8")

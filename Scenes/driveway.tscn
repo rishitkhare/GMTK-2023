@@ -5,4 +5,3 @@
 [node name="driveway" type="Node2D"]
 
 [node name="driveway_tilemap" parent="." instance=ExtResource("1_ebo8s")]
-

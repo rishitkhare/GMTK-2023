@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm5fq4p2i6skg"]
+
+[ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="1_2ocj6"]
+[ext_resource type="Script" path="res://Scenes/UI/ragemeter.gd" id="2_43tts"]
+
+[node name="RageMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2ocj6")
+script = ExtResource("2_43tts")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 379.0
+offset_bottom = 15.0
+max_value = 1.0
+step = 0.001
+show_percentage = false

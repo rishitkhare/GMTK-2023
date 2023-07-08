@@ -15,4 +15,3 @@ func _ready():
 #	velocity = distance_left.normalized() * distance_left.length() * DRAG_FACTOR
 #	self.position += velocity
 	
-	
