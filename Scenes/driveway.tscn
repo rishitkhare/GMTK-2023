@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://10yqyw5rju07"]
+
+[ext_resource type="PackedScene" uid="uid://cpho1xajlvnht" path="res://Scenes/common_tilemaps/driveway_tilemap.tscn" id="1_ebo8s"]
+
+[node name="driveway" type="Node2D"]
+
+[node name="driveway_tilemap" parent="." instance=ExtResource("1_ebo8s")]

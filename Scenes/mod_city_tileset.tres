@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://cuplpmedyo3y"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dgqtdp2fl56df"]
 
 [ext_resource type="Texture2D" uid="uid://enlpt565s48" path="res://tilesets/modern-city-assets/buildings.png" id="1_irpgw"]
 [ext_resource type="Texture2D" uid="uid://dcmujftfp3f4b" path="res://tilesets/modern-city-assets/street.png" id="2_w5eiy"]
