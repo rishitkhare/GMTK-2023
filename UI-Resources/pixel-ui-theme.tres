@@ -4,8 +4,8 @@
 [ext_resource type="FontVariation" uid="uid://dwxw7bn5swfi8" path="res://UI-Resources/font/new_font_variation.tres" id="1_7vln2"]
 [ext_resource type="StyleBox" uid="uid://djd6orj6ywtw8" path="res://UI-Resources/9rects/panel-9rect.tres" id="2_7n7uf"]
 [ext_resource type="StyleBox" uid="uid://dd04ymbtyqpef" path="res://UI-Resources/9rects/button-9rect.tres" id="2_wtk2c"]
-[ext_resource type="StyleBox" uid="uid://cb5rc7b61pnvh" path="res://UI-Resources/9rects/ragemeter-bg.tres" id="5_tonw4"]
-[ext_resource type="StyleBox" uid="uid://cojq84ibpaisp" path="res://UI-Resources/9rects/ragemeter-fill.tres" id="6_xt3fg"]
+[ext_resource type="StyleBox" path="res://UI-Resources/9rects/ragemeter-bg.tres" id="5_tonw4"]
+[ext_resource type="StyleBox" path="res://UI-Resources/9rects/ragemeter-fill.tres" id="6_xt3fg"]
 
 [resource]
 Button/colors/font_color = Color(0.960784, 0.960784, 0.960784, 1)

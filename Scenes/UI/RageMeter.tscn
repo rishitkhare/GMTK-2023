@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd5wn6f3qcfc6"]
+[gd_scene load_steps=3 format=3 uid="uid://bm5fq4p2i6skg"]
 
 [ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="1_2ocj6"]
 [ext_resource type="Script" path="res://Scenes/UI/ragemeter.gd" id="2_43tts"]

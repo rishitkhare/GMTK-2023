@@ -6,8 +6,7 @@ extends Control
 func _process(delta):
 	smoothed += 0.2 * (value - smoothed)
 	$ProgressBar.value = smoothed
-	print(smoothed)
-	
+
 func set_rage_value(val : float):
 	value = val
 	
