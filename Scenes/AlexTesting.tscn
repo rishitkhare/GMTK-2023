@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_rrg0i"]
 [ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="3_8n5sw"]
-[ext_resource type="PackedScene" uid="uid://c1ugfmr63gghh" path="res://Scenes/intersection.tscn" id="3_456s7"]
+[ext_resource type="PackedScene" uid="uid://c1ugfmr63gghh" path="res://Scenes/common_tilemaps/intersection_tilemap.tscn" id="3_456s7"]
 
 [sub_resource type="GDScript" id="GDScript_r2mvg"]
 script/source = "extends Camera2D
