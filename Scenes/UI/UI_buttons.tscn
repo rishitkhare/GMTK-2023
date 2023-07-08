@@ -88,6 +88,7 @@ offset_right = 208.45
 offset_bottom = 177.0
 
 [node name="DraggableButton" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 130.45
 offset_top = 73.0
