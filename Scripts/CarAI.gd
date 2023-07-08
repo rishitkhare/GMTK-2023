@@ -6,6 +6,8 @@ enum mSTATE {IDLE, WAITING, EXECUTING}
 @export var speedUpAmt : float = 0.0
 @export var speedDnAmt : float = 0.0
 @export var startDir : Vector2 = Vector2(0, 0)
+@export var incorTurnPenalty : float = 10
+@export var turnDistance : float = 100
 @onready var rng = RandomNumberGenerator.new()
 @onready var timer : float = 0.0
 @onready var curInst : GameManager.INSTRUCTION
@@ -14,6 +16,7 @@ enum mSTATE {IDLE, WAITING, EXECUTING}
 @onready var state : mSTATE = mSTATE.IDLE
 @onready var rc_f : RayCast2D = $Raycasts/Farther
 @onready var rc_c : RayCast2D = $Raycasts/Closer
+@onready var anger : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,16 +50,29 @@ func _execute_current() -> bool:
 		return false
 	elif(curInst == GameManager.INSTRUCTION.S_UP):
 		mvelocity += curDir * speedUpAmt
+		state = mSTATE.IDLE
 	elif(curInst == GameManager.INSTRUCTION.S_DN):
 		mvelocity -= curDir * speedDnAmt
 		if(mvelocity.angle_to(curDir) != 0):
 			mvelocity = Vector2(0,0)
-			
+		state = mSTATE.IDLE		
 	elif(curInst == GameManager.INSTRUCTION.TURN_R):
 		if(state == mSTATE.WAITING):
-			state = mSTATE.EXECUTING
-	return true
-
+			var goodness = getCollisionState()
+			if(goodness == 2 || goodness == 0):
+				GameManager.time_penalty(incorTurnPenalty)
+				state = mSTATE.IDLE
+			else:
+				state = mSTATE.EXECUTING
+	elif(curInst == GameManager.INSTRUCTION.TURN_L):
+		if(state == mSTATE.WAITING):
+			var goodness = getCollisionState()
+			if(goodness == 2 || goodness == 0):
+				GameManager.time_penalty(incorTurnPenalty)
+				state = mSTATE.IDLE
+			else:
+				state = mSTATE.EXECUTING
+	return true	 
 func getCollisionState() -> int:
 	if(rc_c.is_colliding() && rc_f.is_colliding()):
 		return 2 # you've gone too far

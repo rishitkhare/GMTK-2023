@@ -32,4 +32,7 @@ func grab_next_instruct()  -> INSTRUCTION:
 	else:
 		return instructs.pop_front()
 
+func time_penalty(penalty : float):
+	pass
+
 
