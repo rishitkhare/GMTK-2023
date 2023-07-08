@@ -4,7 +4,7 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 
 @onready var car : CharacterBody2D
 @onready var camera : Camera2D
-@onready var instructs = [INSTRUCTION.S_UP]
+@onready var instructs = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +33,6 @@ func grab_next_instruct()  -> INSTRUCTION:
 		return instructs.pop_front()
 
 func time_penalty(penalty : float):
-	pass
+	print("penalty")
 
 
