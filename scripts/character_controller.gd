@@ -85,8 +85,6 @@ func platforming_code():
 	
 	var input : Vector2 = get_input()
 	
-	print("left: " + str(rc_downleft.is_colliding()) + " middle: " + str(rc_down.is_colliding()) + " right: " + str(rc_downright.is_colliding()))
-	
 	count_frames()
 	
 	do_x_movement(input)

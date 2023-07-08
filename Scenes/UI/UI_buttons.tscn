@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmwccrwq2oq5g"]
+
+[ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="1_gmxt7"]
+[ext_resource type="PackedScene" uid="uid://cgoav5v41i3j3" path="res://Scenes/UI/button.tscn" id="2_gsxab"]
+[ext_resource type="StyleBox" uid="uid://hh20hea1wtu6" path="res://UI-Resources/9rects/slot-9rect.tres" id="4_krxn7"]
+[ext_resource type="Script" path="res://scripts/UI/drag_button.gd" id="4_obn6j"]
+
+[node name="DriverControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.55
+offset_right = 0.549988
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gmxt7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -84.0
+offset_right = -6.0
+offset_bottom = -10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" parent="Panel/HBoxContainer/CenterContainer" instance=ExtResource("2_gsxab")]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" parent="Panel/HBoxContainer/CenterContainer2" instance=ExtResource("2_gsxab")]
+layout_mode = 2
+text = "Speed up!"
+
+[node name="CenterContainer3" type="CenterContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" parent="Panel/HBoxContainer/CenterContainer3" instance=ExtResource("2_gsxab")]
+layout_mode = 2
+text = "Stop!"
+
+[node name="CenterContainer4" type="CenterContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" parent="Panel/HBoxContainer/CenterContainer4" instance=ExtResource("2_gsxab")]
+layout_mode = 2
+text = "Turn right!"
+
+[node name="Slot" type="Panel" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("4_krxn7")
+
+[node name="Anchor" type="Control" parent="Slot"]
+anchors_preset = 0
+offset_left = 58.45
+offset_top = 27.0
+offset_right = 208.45
+offset_bottom = 177.0
+
+[node name="DraggableButton" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 130.45
+offset_top = 73.0
+offset_right = 130.45
+offset_bottom = 73.0
+script = ExtResource("4_obn6j")
+
+[node name="Button" type="Button" parent="DraggableButton"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = -48.0
+offset_top = -21.0
+offset_right = 52.0
+offset_bottom = 19.0
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Turn left!"
