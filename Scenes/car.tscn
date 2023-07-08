@@ -22,9 +22,10 @@ enum tSTATE {PRE, LEG1, LEG2, NONE}
 @onready var state : mSTATE = mSTATE.IDLE
 @onready var rc_f : RayCast2D = $Raycasts/Farther
 @onready var rc_c : RayCast2D = $Raycasts/Closer
-@onready var anger : float = 0
 @onready var temp : float = 0
 @onready var tstate : tSTATE = tSTATE.NONE
+@onready var speedUpAm  : float = speedUpAmt
+@onready var speedDnAm : float = speedDnAmt
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +66,12 @@ func _physics_process(delta):
 				state = mSTATE.IDLE
 	self.position.x += mvelocity.x
 	self.position.y += mvelocity.y	
+	#update range stuff
+	waitTimeMid = 1 + GameManager.rage*2
+	waitTimeVar = GameManager.rage*2
+	speedUpAm = speedUpAmt + speedUpAmt*GameManager.rage
+	speedDnAm = speedDnAmt - speedDnAmt*GameManager.rage
+	
 
 func _process_instruct(instruct : GameManager.INSTRUCTION):
 	curInst = instruct
@@ -79,10 +86,10 @@ func _execute_current() -> bool:
 	if(curInst == GameManager.INSTRUCTION.IDLE):
 		return false
 	elif(curInst == GameManager.INSTRUCTION.S_UP):
-		mvelocity += curDir * speedUpAmt
+		mvelocity += curDir * speedUpAm
 		state = mSTATE.IDLE
 	elif(curInst == GameManager.INSTRUCTION.S_DN):
-		mvelocity -= curDir * speedDnAmt
+		mvelocity -= curDir * speedDnAm
 		if(mvelocity.angle_to(curDir) != 0):
 			mvelocity = Vector2(0,0)
 		state = mSTATE.IDLE		
@@ -93,7 +100,6 @@ func _execute_current() -> bool:
 				GameManager.time_penalty(incorTurnPenalty)
 				state = mSTATE.IDLE
 			else:
-				print(\"turn registered\")
 				state = mSTATE.EXECUTING
 				tstate = tSTATE.PRE
 	elif(curInst == GameManager.INSTRUCTION.TURN_L):
@@ -101,6 +107,7 @@ func _execute_current() -> bool:
 			var goodness = getCollisionState()
 			if(goodness == 2 || goodness == 0):
 				GameManager.time_penalty(incorTurnPenalty)
+				GameManager.add_rage(0.1)
 				state = mSTATE.IDLE
 			else:
 				state = mSTATE.EXECUTING
