@@ -268,6 +268,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_str0n")
 
 [node name="Node2D" type="Node2D"]
+visible = false
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qwi6v")
