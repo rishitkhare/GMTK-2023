@@ -25,6 +25,9 @@ func add_instruct(instruct : INSTRUCTION):
 	instructs.append(instruct)
 	
 func grab_next_instruct()  -> INSTRUCTION:
-	return instructs.pop_front()
+	if(instructs.size == 0):
+		return INSTRUCTION.IDLE
+	else:
+		return instructs.pop_front()
 
 
