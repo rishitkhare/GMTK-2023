@@ -5,6 +5,7 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 @onready var car : CharacterBody2D
 @onready var camera : Camera2D
 @onready var instructs = []
+@onready var rage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	clampf(rage, 0, 1)
 	
 func register_car(_car : CharacterBody2D):
 	self.car = _car
@@ -34,5 +35,9 @@ func grab_next_instruct()  -> INSTRUCTION:
 
 func time_penalty(penalty : float):
 	print("penalty")
+	
+func add_rage(_rage : float):
+	rage += _rage
+	
 
 
