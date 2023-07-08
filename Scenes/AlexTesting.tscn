@@ -32,13 +32,14 @@ size = Vector2(327.273, 144)
 
 [node name="Car" parent="." instance=ExtResource("1_rrg0i")]
 z_index = 1
-position = Vector2(-455, -17)
+position = Vector2(-460, 26)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 waitTimeVar = 0.15
 speedUpAmt = 0.3
 speedDnAmt = 100.0
 startDir = Vector2(0, -1)
+turnDistance = 1.05
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-475, -114)

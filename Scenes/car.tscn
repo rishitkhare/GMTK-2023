@@ -5,6 +5,7 @@
 [sub_resource type="GDScript" id="GDScript_8jtnf"]
 script/source = "extends CharacterBody2D
 enum mSTATE {IDLE, WAITING, EXECUTING}
+enum tSTATE {PRE, LEG1, LEG2, NONE}
 
 @export var waitTimeMid : float = 1.0
 @export var waitTimeVar : float = 0.2
@@ -23,6 +24,7 @@ enum mSTATE {IDLE, WAITING, EXECUTING}
 @onready var rc_c : RayCast2D = $Raycasts/Closer
 @onready var anger : float = 0
 @onready var temp : float = 0
+@onready var tstate : tSTATE = tSTATE.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,19 +40,31 @@ func _physics_process(delta):
 	elif(state == mSTATE.IDLE):
 		_process_instruct(GameManager.grab_next_instruct())
 	elif(state == mSTATE.EXECUTING):
-		if(getCollisionState() == 2 && temp == 0):
+		if(tstate == tSTATE.PRE):
 			temp = turnDistance / mvelocity.length()
-		elif(temp > 0):
+			if(getCollisionState() == 2):
+				tstate = tSTATE.LEG1
+				if(curInst == GameManager.INSTRUCTION.TURN_L):
+					temp = temp * 1.7
+		if(tstate == tSTATE.LEG1):
 			temp -= delta
-		elif(temp <= 0):
-			temp = 0
-			curDir = Vector2(curDir.y, -1 * curDir.x)
-			mvelocity = Vector2(mvelocity.y, -1 * mvelocity.x)
+			if(temp <= 0):
+				tstate = tSTATE.LEG2
+				if(curInst == GameManager.INSTRUCTION.TURN_L):
+					curDir = Vector2(curDir.y, curDir.x)
+					mvelocity = Vector2(mvelocity.y, mvelocity.x)
+					self.rotation_degrees -= 90
+				elif(curInst == GameManager.INSTRUCTION.TURN_R):
+					curDir = -1 * Vector2(curDir.y, curDir.x)
+					mvelocity = -1 * Vector2(mvelocity.y, mvelocity.x)
+					self.rotation_degrees += 90
+				temp = 0
+		if(tstate == tSTATE.LEG2):
+			if(getCollisionState() == 0):
+				tstate = tSTATE.NONE
+				state = mSTATE.IDLE
 	self.position.x += mvelocity.x
 	self.position.y += mvelocity.y	
-	if(getCollisionState() == 1):
-		pass
-		#print(\"sweet spot\")
 
 func _process_instruct(instruct : GameManager.INSTRUCTION):
 	curInst = instruct
@@ -79,7 +93,9 @@ func _execute_current() -> bool:
 				GameManager.time_penalty(incorTurnPenalty)
 				state = mSTATE.IDLE
 			else:
+				print(\"turn registered\")
 				state = mSTATE.EXECUTING
+				tstate = tSTATE.PRE
 	elif(curInst == GameManager.INSTRUCTION.TURN_L):
 		if(state == mSTATE.WAITING):
 			var goodness = getCollisionState()
@@ -88,6 +104,7 @@ func _execute_current() -> bool:
 				state = mSTATE.IDLE
 			else:
 				state = mSTATE.EXECUTING
+				tstate = tSTATE.PRE
 	return true	 
 func getCollisionState() -> int:
 	if(rc_c.is_colliding() && rc_f.is_colliding()):
@@ -117,9 +134,11 @@ texture = ExtResource("2_wnks0")
 [node name="Farther" type="RayCast2D" parent="Raycasts"]
 position = Vector2(-12, -47)
 target_position = Vector2(0, -275)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Closer" type="RayCast2D" parent="Raycasts"]
 position = Vector2(13, 12)
 target_position = Vector2(0, -76)
+hit_from_inside = true
 collide_with_areas = true
