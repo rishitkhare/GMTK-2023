@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://1c3l57x5tw85"]
+
+[ext_resource type="FontFile" uid="uid://cr0gjts74qlqj" path="res://UI-Resources/font/AtariSmall.ttf" id="1_0h1ym"]
+[ext_resource type="FontVariation" uid="uid://dwxw7bn5swfi8" path="res://UI-Resources/font/new_font_variation.tres" id="1_7vln2"]
+[ext_resource type="StyleBox" uid="uid://djd6orj6ywtw8" path="res://UI-Resources/9rects/panel-9rect.tres" id="2_7n7uf"]
+[ext_resource type="StyleBox" uid="uid://dd04ymbtyqpef" path="res://UI-Resources/9rects/button-9rect.tres" id="2_wtk2c"]
+
+[resource]
+Button/colors/font_color = Color(0.960784, 0.960784, 0.960784, 1)
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_7vln2")
+Button/styles/normal = ExtResource("2_wtk2c")
+Label/fonts/font = ExtResource("1_0h1ym")
+Panel/styles/panel = ExtResource("2_7n7uf")
+RichTextLabel/fonts/normal_font = ExtResource("1_0h1ym")
