@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctlefud45om14"]
+
+[ext_resource type="Script" path="res://Scripts/CarAI.gd" id="1_pytxt"]
+[ext_resource type="Texture2D" uid="uid://d2htuvqdsc872" path="res://icon.svg" id="2_wnks0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsncy"]
+
+[node name="Car" type="CharacterBody2D"]
+script = ExtResource("1_pytxt")
+speedUpAmt = 1.0
+startDir = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jsncy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wnks0")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Farther" type="RayCast2D" parent="Raycasts"]
+
+[node name="Closer" type="RayCast2D" parent="Raycasts"]

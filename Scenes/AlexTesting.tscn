@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnjitjtqvpa12"]
+
+[ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_rrg0i"]
+[ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="2_amnod"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Car" parent="." instance=ExtResource("1_rrg0i")]
+motion_mode = 1
+speedUpAmt = 0.1
+startDir = Vector2(0, -1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_amnod")
+DRAG_FACTOR = null
