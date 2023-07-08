@@ -7,6 +7,8 @@
 
 [node name="Car" type="CharacterBody2D"]
 script = ExtResource("1_pytxt")
+speedUpAmt = 1.0
+startDir = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jsncy")

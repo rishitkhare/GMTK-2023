@@ -1,5 +1,4 @@
-extends Node2D
-
+extends CharacterBody2D
 enum mSTATE {IDLE, WAITING, EXECUTING}
 
 @export var waitTimeMid : float = 1.0
@@ -18,8 +17,7 @@ enum mSTATE {IDLE, WAITING, EXECUTING}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Todo: Register with game manager
-	
+	GameManager.register_car(self)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
