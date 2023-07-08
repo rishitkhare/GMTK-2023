@@ -9,7 +9,9 @@
 Button/colors/font_color = Color(0.960784, 0.960784, 0.960784, 1)
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_7vln2")
+Button/styles/hover = ExtResource("2_wtk2c")
 Button/styles/normal = ExtResource("2_wtk2c")
+Button/styles/pressed = ExtResource("2_wtk2c")
 Label/fonts/font = ExtResource("1_0h1ym")
 Panel/styles/panel = ExtResource("2_7n7uf")
 RichTextLabel/fonts/normal_font = ExtResource("1_0h1ym")
