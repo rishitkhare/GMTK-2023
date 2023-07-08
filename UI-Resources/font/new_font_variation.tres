@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dwxw7bn5swfi8"]
+
+[ext_resource type="FontFile" uid="uid://cr0gjts74qlqj" path="res://UI-Resources/font/AtariSmall.ttf" id="1_kjmfr"]
+
+[resource]
+base_font = ExtResource("1_kjmfr")
+variation_embolden = 0.22
