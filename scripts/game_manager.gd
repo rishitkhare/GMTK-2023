@@ -9,7 +9,7 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	randomize()
 	pass # Replace with function body.
 
 
@@ -38,6 +38,9 @@ func time_penalty(penalty : float):
 	
 func add_rage(_rage : float):
 	rage += _rage
+
+func get_random_int(max_int_excl : int) -> int :
+	return randi() % max_int_excl
 	
 
 
