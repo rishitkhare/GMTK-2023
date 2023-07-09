@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var StopTime : float = 0.01
+@export var StopTime : float = 0.5
 @export var violationPenalty : float = 100
 @onready var Player : CharacterBody2D = GameManager.car
 @onready var StopTimer : float = 0.0
@@ -14,6 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if !Player:
+		Player = GameManager.car
+	
 	if(area.overlaps_body(Player) && entered == false):
 		entered = true
 		print("entered stop")

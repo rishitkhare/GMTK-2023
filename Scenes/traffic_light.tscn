@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt7qxwuev606u"]
+
+[ext_resource type="Script" path="res://scripts/traffic_light.gd" id="1_v00xw"]
+[ext_resource type="Texture2D" uid="uid://gelkilayu7pf" path="res://sprites/all_lights.png" id="2_yg1pf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duht6"]
+size = Vector2(30, 21)
+
+[node name="traffic_light" type="Node2D"]
+position = Vector2(119, -867)
+script = ExtResource("1_v00xw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, -1)
+texture = ExtResource("2_yg1pf")
+
+[node name="ObstructionArea" type="Area2D" parent="."]
+position = Vector2(-9, 56.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstructionArea"]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_duht6")

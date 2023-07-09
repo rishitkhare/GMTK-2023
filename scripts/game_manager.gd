@@ -64,6 +64,7 @@ func car_crashed():
 	reset_level()
 	
 func reset_level():
+	rage = 0
 	get_tree().reload_current_scene()
 	
 # does not allow for more than 9 lvls
