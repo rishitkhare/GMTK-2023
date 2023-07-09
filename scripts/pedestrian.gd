@@ -11,7 +11,19 @@ enum PedestrianState {IDLE, WALK}
 @export var direction : Vector2 = Vector2.DOWN:
 	set(value):
 		direction = value
+		$RayCast2D.target_position = direction * 15
 		update_animation()
+
+func _ready():
+	direction = direction # calls the setter
+
+func _process(delta):
+	var ray_col = $RayCast2D.get_collider()
+	if ray_col == GameManager.car:
+		$AnimationPlayer.pause()
+		state = PedestrianState.IDLE
+	else:
+		$AnimationPlayer.play()
 		
 func update_animation():
 	var animation_name = npc_name + "_"
