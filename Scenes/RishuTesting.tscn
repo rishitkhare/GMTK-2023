@@ -34,7 +34,7 @@ size = Vector2(100, 100)
 
 [node name="Car" parent="." instance=ExtResource("1_2gr7a")]
 z_index = 1
-position = Vector2(-515, -138)
+position = Vector2(-516, -165)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 turnDistance = 0.65
@@ -58,13 +58,13 @@ rotation = -3.14159
 shape = SubResource("RectangleShape2D_7fgw8")
 
 [node name="HorizontalPedestrian" parent="." instance=ExtResource("3_sep3q")]
-position = Vector2(-427, -208)
+position = Vector2(-487, -211)
 
 [node name="DebugCam" type="Camera2D" parent="."]
 position = Vector2(-463, -217)
 
 [node name="VerticalPedestrian" parent="." instance=ExtResource("4_homob")]
-position = Vector2(-422, -315)
+position = Vector2(-479, -324)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
