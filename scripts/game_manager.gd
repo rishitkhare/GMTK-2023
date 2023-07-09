@@ -4,7 +4,7 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 
 signal level_reset
 
-const LVL_COUNT = 1
+const LVL_COUNT = 3
 const WIN_SCENE_PATH = "res://Scenes/Win.tscn"
 
 @onready var car : CharacterBody2D
@@ -70,6 +70,9 @@ func car_crashed():
 	
 func reset_level():
 	set_rage(0)
+	instructs.clear()
+	time_remaining = 0
+	timer_enabled = false
 	get_tree().reload_current_scene()
 	
 # does not allow for more than 9 lvls

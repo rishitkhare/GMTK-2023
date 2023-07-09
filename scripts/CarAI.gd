@@ -33,7 +33,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print(mSTATE.keys()[state])
 	if(state == mSTATE.WAITING):
 		if(timer <= 0.0):
 			_execute_current()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://citnxiqipcaid"]
+[gd_scene load_steps=3 format=3 uid="uid://citnxiqipcaid"]
 
 [ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="1_el0ga"]
 [ext_resource type="PackedScene" uid="uid://bm5fq4p2i6skg" path="res://Scenes/UI/RageMeter.tscn" id="2_ks64c"]
-[ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="3_suq27"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -16,44 +15,3 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Timer" type="Panel" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -107.0
-offset_top = 3.0
-offset_right = -5.0
-offset_bottom = 53.0
-grow_horizontal = 0
-theme = ExtResource("3_suq27")
-
-[node name="Label" type="Label" parent="Timer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Time
-"
-horizontal_alignment = 1
-
-[node name="Timestamp" type="Label" parent="Timer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 24.0
-offset_right = -6.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
