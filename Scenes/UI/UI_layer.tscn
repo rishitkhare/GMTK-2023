@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://di8fdqfuj83fj"]
+
+[ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="1_el0ga"]
+[ext_resource type="PackedScene" uid="uid://bm5fq4p2i6skg" path="res://Scenes/UI/RageMeter.tscn" id="2_ks64c"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="DriverControls" parent="." instance=ExtResource("1_el0ga")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="RageMeter" parent="." instance=ExtResource("2_ks64c")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

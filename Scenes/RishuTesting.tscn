@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnjitjtqvpa12"]
+[gd_scene load_steps=6 format=3 uid="uid://5blmo2b283be"]
 
-[ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_rrg0i"]
-[ext_resource type="PackedScene" uid="uid://bl626g7ea8wkn" path="res://Scenes/common_tilemaps/intersection_tilemap.tscn" id="3_456s7"]
-[ext_resource type="PackedScene" uid="uid://dhp1ks3f1q6ss" path="res://Scenes/StopSignNode.tscn" id="3_r52si"]
+[ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_2gr7a"]
+[ext_resource type="PackedScene" uid="uid://bl626g7ea8wkn" path="res://Scenes/common_tilemaps/intersection_tilemap.tscn" id="2_d371e"]
+[ext_resource type="SpriteFrames" uid="uid://b6aumqw1ce52l" path="res://art/npcSpriteFrames.tres" id="3_hp4ni"]
 
 [sub_resource type="GDScript" id="GDScript_r2mvg"]
 script/source = "extends Camera2D
@@ -30,9 +30,9 @@ size = Vector2(327.273, 144)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Car" parent="." instance=ExtResource("1_rrg0i")]
+[node name="Car" parent="." instance=ExtResource("1_2gr7a")]
 z_index = 1
-position = Vector2(-457, -88)
+position = Vector2(-457, 366)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 
@@ -40,7 +40,7 @@ motion_mode = 1
 position = Vector2(-475, -114)
 script = SubResource("GDScript_r2mvg")
 
-[node name="Node2D" parent="." instance=ExtResource("3_456s7")]
+[node name="Node2D" parent="." instance=ExtResource("2_d371e")]
 position = Vector2(-487, -228)
 
 [node name="Area2D" type="Area2D" parent="Node2D"]
@@ -52,5 +52,7 @@ rotation = -3.14159
 scale = Vector2(0.44, -1)
 shape = SubResource("RectangleShape2D_7fgw8")
 
-[node name="Stop_Sign" parent="." instance=ExtResource("3_r52si")]
-position = Vector2(-459, -174)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-395, -163)
+sprite_frames = ExtResource("3_hp4ni")
+animation = &"01_idle"

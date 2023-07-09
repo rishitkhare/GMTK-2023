@@ -10,12 +10,6 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	clampf(rage, 0, 1)
 	
 func register_car(_car : CharacterBody2D):
 	self.car = _car
@@ -37,7 +31,10 @@ func time_penalty(penalty : float):
 	print("penalty")
 	
 func add_rage(_rage : float):
+	print("rage added " + str(_rage))
 	rage += _rage
+	rage = clampf(rage, 0, 1)
+	UI.get_node("RageMeter").set_rage_value(rage)
 
 func get_random_int(max_int_excl : int) -> int :
 	return randi() % max_int_excl

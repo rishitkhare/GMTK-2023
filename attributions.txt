@@ -1,2 +1,8 @@
 Pixel art GUI art assets from:
 	https://mounirtohami.itch.io/pixel-art-gui-elements
+
+Pixel art "Modern City" assets from:
+	https://shatteredreality.itch.io/modern-city
+
+Pixel art "RPG Townsfolk" asset from:
+	https://franuka.itch.io/rpg-townsfolk-pack
