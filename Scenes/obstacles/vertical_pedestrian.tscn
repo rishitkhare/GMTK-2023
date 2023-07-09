@@ -94,7 +94,7 @@ size = Vector2(8, 12)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_frptg")
-animation = &"01_idle_side"
+animation = &"01_idle_down"
 offset = Vector2(0, -9)
 script = ExtResource("2_sy7xl")
 

@@ -31,7 +31,6 @@ func grabDimensions():
 		# proceeds to perform the gayest ass coordinate space transformation
 		var start = tilemap.to_global(tilemap.map_to_local(map_rect.position) - (0.5*tilemap.tile_set.tile_size))
 		var end = tilemap.to_global(tilemap.map_to_local(map_rect.end) - (0.5*tilemap.tile_set.tile_size))
-		print(end)
 		
 		if(!mostleft || mostleft > start.x):
 			mostleft = start.x
@@ -42,7 +41,6 @@ func grabDimensions():
 		if(!mostbottom || mostbottom < end.y):
 			mostbottom = end.y
 			
-	print(mostright)
 	totalWidth = mostright - mostleft
 	totalHeight = mosttop - mostbottom
 	if(totalWidth > totalHeight):

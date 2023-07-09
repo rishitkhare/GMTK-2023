@@ -4,12 +4,16 @@ enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 
 signal level_reset
 
+const LVL_COUNT = 1
+const WIN_SCENE_PATH = "res://Scenes/Win.tscn"
+
 @onready var car : CharacterBody2D
 @onready var camera : Camera2D
 @onready var instructs = []
 @onready var rage = 0
 @onready var time_remaining = 0
 @onready var timer_enabled = false
+@onready var level_index = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,4 +66,21 @@ func car_crashed():
 func reset_level():
 	rage = 0
 	get_tree().reload_current_scene()
+	
+# does not allow for more than 9 lvls
+func win():
+	level_index += 1
+	
+	if level_index > LVL_COUNT:
+		get_tree().change_scene_to_file(WIN_SCENE_PATH)
+		
+		for ui_node in UI.get_children():
+			ui_node.hide()
+			ui_node.set_process_input(false)
+		
+	else:
+		var new_scene_path = "res://Scenes/Levels/level0" + str(level_index) + ".tscn"
+		
+		get_tree().change_scene_to_file(new_scene_path)
+	
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://gh4mw7jpgufw"]
+[gd_scene load_steps=10 format=3 uid="uid://gh4mw7jpgufw"]
 
 [ext_resource type="TileSet" uid="uid://dgqtdp2fl56df" path="res://Scenes/mod_city_tileset.tres" id="1_mar5x"]
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="3_dt6yr"]
 [ext_resource type="PackedScene" uid="uid://cpho1xajlvnht" path="res://Scenes/common_tilemaps/driveway_tilemap.tscn" id="3_sonvu"]
 [ext_resource type="PackedScene" uid="uid://bt7qxwuev606u" path="res://Scenes/traffic_light.tscn" id="4_usax4"]
 [ext_resource type="PackedScene" uid="uid://dhp1ks3f1q6ss" path="res://Scenes/StopSignNode.tscn" id="6_6trjq"]
+[ext_resource type="PackedScene" uid="uid://dsp2jcg6msa7t" path="res://Scenes/wintrigger.tscn" id="7_4j8nt"]
 
 [sub_resource type="GDScript" id="GDScript_ur2u3"]
 script/source = "extends Node
@@ -62,3 +63,5 @@ position = Vector2(110, 12)
 
 [node name="Stopwatch" type="Node" parent="."]
 script = SubResource("GDScript_ur2u3")
+
+[node name="WinTrigger" parent="." instance=ExtResource("7_4j8nt")]
