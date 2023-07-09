@@ -1,14 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://gh4mw7jpgufw"]
+[gd_scene load_steps=7 format=3 uid="uid://gh4mw7jpgufw"]
 
-[ext_resource type="TileSet" uid="uid://cuplpmedyo3y" path="res://Scenes/mod_city_tileset.tres" id="1_mar5x"]
+[ext_resource type="TileSet" uid="uid://dgqtdp2fl56df" path="res://Scenes/mod_city_tileset.tres" id="1_mar5x"]
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="3_dt6yr"]
 [ext_resource type="PackedScene" uid="uid://cpho1xajlvnht" path="res://Scenes/common_tilemaps/driveway_tilemap.tscn" id="3_sonvu"]
-[ext_resource type="Texture2D" uid="uid://gelkilayu7pf" path="res://sprites/all_lights.png" id="4_ty175"]
-[ext_resource type="Script" path="res://scripts/traffic_light.gd" id="5_psaia"]
+[ext_resource type="PackedScene" uid="uid://bt7qxwuev606u" path="res://Scenes/traffic_light.tscn" id="4_usax4"]
 [ext_resource type="PackedScene" uid="uid://dhp1ks3f1q6ss" path="res://Scenes/StopSignNode.tscn" id="6_6trjq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_duht6"]
-size = Vector2(30, 21)
 
 [sub_resource type="GDScript" id="GDScript_ur2u3"]
 script/source = "extends Node
@@ -56,23 +52,10 @@ scale = Vector2(0.225, 0.225)
 minRageWaitTime = 0.5
 waitTimeVar = 0.1
 
-[node name="Camera2D" type="Camera2D" parent="Car"]
+[node name="Camera2D2" type="Camera2D" parent="Car"]
 position_smoothing_speed = 1.0
 
-[node name="traffic_light" type="Node2D" parent="."]
-position = Vector2(119, -867)
-script = ExtResource("5_psaia")
-
-[node name="Sprite2D" type="Sprite2D" parent="traffic_light"]
-position = Vector2(6, -1)
-texture = ExtResource("4_ty175")
-
-[node name="ObstructionArea" type="Area2D" parent="traffic_light"]
-position = Vector2(-9, 56.125)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="traffic_light/ObstructionArea"]
-position = Vector2(0, 0.375)
-shape = SubResource("RectangleShape2D_duht6")
+[node name="traffic_light" parent="." instance=ExtResource("4_usax4")]
 
 [node name="Stop_Sign" parent="." instance=ExtResource("6_6trjq")]
 position = Vector2(110, 12)

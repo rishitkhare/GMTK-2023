@@ -9,18 +9,20 @@ signal level_reset
 @onready var instructs = []
 @onready var rage = 0
 @onready var time_remaining = 0
+@onready var timer_enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	
 func _process(delta):
-	time_remaining -= delta
-	
-	UI.get_node("Timer/Timestamp").text = str(floor(time_remaining))
-	
-	if time_remaining < 0:
-		reset_level()
+	if timer_enabled:
+		time_remaining -= delta
+		
+		UI.get_node("Timer/Timestamp").text = str(floor(time_remaining))
+		
+		if time_remaining < 0:
+			reset_level()
 	
 func register_car(_car : CharacterBody2D):
 	self.car = _car
@@ -58,5 +60,6 @@ func car_crashed():
 	reset_level()
 	
 func reset_level():
+	rage = 0
 	get_tree().reload_current_scene()
 

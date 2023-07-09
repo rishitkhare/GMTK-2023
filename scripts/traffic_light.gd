@@ -38,6 +38,9 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !car:
+		car = GameManager.car
+	
 	if not punished and obstruction_area.overlaps_body(car):
 		if light_state == LIGHT_STATES.RED_LIGHT or car.mvelocity == Vector2.ZERO:
 			GameManager.time_penalty(traffic_light_violation)
