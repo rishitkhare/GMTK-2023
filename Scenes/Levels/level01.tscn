@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gh4mw7jpgufw"]
+[gd_scene load_steps=8 format=3 uid="uid://gh4mw7jpgufw"]
 
 [ext_resource type="TileSet" uid="uid://dgqtdp2fl56df" path="res://Scenes/mod_city_tileset.tres" id="1_mar5x"]
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="3_dt6yr"]
