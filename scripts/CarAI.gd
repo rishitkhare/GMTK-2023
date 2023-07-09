@@ -33,6 +33,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	print(mSTATE.keys()[state])
 	if(state == mSTATE.WAITING):
 		if(timer <= 0.0):
 			_execute_current()
@@ -51,28 +52,29 @@ func _physics_process(delta):
 			if(getCollisionState() == 0):
 				tstate = tSTATE.LEG1
 				if(curInst == GameManager.INSTRUCTION.TURN_L):
-					temp = temp * 2.2
+					temp = temp * 2
 		if(tstate == tSTATE.LEG1):
 			temp -= delta
 			if(temp <= 0):
 				tstate = tSTATE.LEG2
 				if(curInst == GameManager.INSTRUCTION.TURN_L):
-					curDir = Vector2(curDir.y, curDir.x)
-					mvelocity = Vector2(mvelocity.y, mvelocity.x)
+					curDir = curDir.rotated(-PI/2)
+					mvelocity = mvelocity.rotated(-PI/2)
 					self.rotation_degrees -= 90
 				elif(curInst == GameManager.INSTRUCTION.TURN_R):
-					curDir = -1 * Vector2(curDir.y, curDir.x)
-					mvelocity = -1 * Vector2(mvelocity.y, mvelocity.x)
+					print("turn right transform here")
+					curDir = curDir.rotated(PI/2)
+					mvelocity = mvelocity.rotated(PI/2)
 					self.rotation_degrees += 90
 				temp = 0
 		if(tstate == tSTATE.LEG2):
-			if(getCollisionState() == 5):
+			if(getCollisionState() != 0):
 				tstate = tSTATE.NONE
 				state = mSTATE.IDLE
 	self.position.x += mvelocity.x
 	self.position.y += mvelocity.y	
 	#update range stuff
-	waitTimeMid = minRageWaitTime + GameManager.rage
+	waitTimeMid = minRageWaitTime + 0.4 * GameManager.rage
 	waitTimeVar = GameManager.rage*0.4
 	speedUpAm = speedUpAmt + speedUpAmt*GameManager.rage
 	speedDnAm = speedDnAmt - speedDnAmt*GameManager.rage

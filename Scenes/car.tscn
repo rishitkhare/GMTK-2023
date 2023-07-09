@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_jsncy")
 
 [node name="Farther" type="RayCast2D" parent="."]
 position = Vector2(-12, -47)
-target_position = Vector2(0, -275)
+target_position = Vector2(0, -527)
 collide_with_areas = true
 
 [node name="Closer" type="RayCast2D" parent="."]

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m1hy"]
 size = Vector2(131.85, 79.09)
 
-[node name="WinTrigger" type="Area2D"]
+[node name="CrashTrigger" type="Area2D"]
 position = Vector2(82, -1034)
 script = ExtResource("1_8scse")
 

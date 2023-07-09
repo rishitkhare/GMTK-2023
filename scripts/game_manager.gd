@@ -51,6 +51,11 @@ func add_rage(_rage : float):
 	rage += _rage
 	rage = clampf(rage, 0, 1)
 	UI.get_node("RageMeter").set_rage_value(rage)
+	
+func set_rage(_rage : float):
+	rage = _rage
+	rage = clampf(rage, 0, 1)
+	UI.get_node("RageMeter").set_rage_value(rage)
 
 func get_random_int(max_int_excl : int) -> int :
 	return randi() % max_int_excl
@@ -64,7 +69,7 @@ func car_crashed():
 	reset_level()
 	
 func reset_level():
-	rage = 0
+	set_rage(0)
 	get_tree().reload_current_scene()
 	
 # does not allow for more than 9 lvls
