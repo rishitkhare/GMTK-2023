@@ -46,6 +46,7 @@ func _physics_process(delta):
 			# start moving if not already
 			if mvelocity == Vector2.ZERO:
 				mvelocity = curDir * speedUpAm
+				
 			temp = turnDistance / mvelocity.length()
 			if(getCollisionState() == 0):
 				tstate = tSTATE.LEG1
