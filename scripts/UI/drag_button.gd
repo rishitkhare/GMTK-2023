@@ -15,7 +15,7 @@ func _input(event):
 	# handles when to turn "dragging" off
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if dragging && event.pressed == false:
-			if (position - slot_position).length_squared() < 5625:
+			if abs((position - slot_position).x) < 60 && abs((position - slot_position).y) < 18:
 				dragging = false
 				to_slot = true
 				match(selected.text):

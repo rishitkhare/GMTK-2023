@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://5blmo2b283be"]
+[gd_scene load_steps=8 format=3 uid="uid://5blmo2b283be"]
 
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_2gr7a"]
 [ext_resource type="PackedScene" uid="uid://bl626g7ea8wkn" path="res://Scenes/common_tilemaps/intersection_tilemap.tscn" id="2_d371e"]
 [ext_resource type="PackedScene" uid="uid://cpcqq3sl18je5" path="res://Scenes/obstacles/horizontal_pedestrian.tscn" id="3_sep3q"]
 [ext_resource type="PackedScene" uid="uid://c55qah5d0uoeb" path="res://Scenes/obstacles/vertical_pedestrian.tscn" id="4_homob"]
+[ext_resource type="PackedScene" uid="uid://b2a3hyuwbpvpp" path="res://Scenes/Minimap.tscn" id="5_clske"]
 
 [sub_resource type="GDScript" id="GDScript_r2mvg"]
 script/source = "extends Camera2D
@@ -33,7 +34,7 @@ size = Vector2(100, 100)
 
 [node name="Car" parent="." instance=ExtResource("1_2gr7a")]
 z_index = 1
-position = Vector2(-455, -12)
+position = Vector2(-515, -138)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 turnDistance = 0.65
@@ -43,14 +44,16 @@ position = Vector2(-475, -128)
 position_smoothing_enabled = true
 script = SubResource("GDScript_r2mvg")
 
-[node name="Node2D" parent="." instance=ExtResource("2_d371e")]
-position = Vector2(-487, -228)
+[node name="Tilemaps" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Node2D"]
+[node name="Node2D" parent="Tilemaps" instance=ExtResource("2_d371e")]
+position = Vector2(-545, -235)
+
+[node name="Area2D" type="Area2D" parent="Tilemaps/Node2D"]
 position = Vector2(8, -40)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemaps/Node2D/Area2D"]
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_7fgw8")
 
@@ -62,3 +65,8 @@ position = Vector2(-463, -217)
 
 [node name="VerticalPedestrian" parent="." instance=ExtResource("4_homob")]
 position = Vector2(-422, -315)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Minimap" parent="CanvasLayer" instance=ExtResource("5_clske")]
