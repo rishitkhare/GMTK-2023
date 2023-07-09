@@ -1,47 +1,52 @@
-extends Node2D
+extends Control
 
 @onready var map : Panel = $Panel
-@onready var tilemaps : Node2D = $TileMaps
-@export var Player : CharacterBody2D
+@onready var tilemaps : Node2D = get_tree().current_scene.get_node("Tilemaps")
 var totalWidth : float
 var totalHeight : float
-var center : Vector2
+var topleftcorner : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	grabDimensions()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	self.position = _coord_transform(Player.position)	
+	$Panel/characterPosMarker.position = _coord_transform(GameManager.car.position)
+	# print($characterPosMarker.position)
 
 func _coord_transform(car_pos : Vector2) -> Vector2:
-	var x_trans = map.size.x / totalWidth
-	var y_trans = map.size.y / totalHeight
-	var x_raw = (car_pos.x - center.x) * x_trans
-	var y_raw = (car_pos.y - center.y) * y_trans
-	return Vector2(x_raw + map.position.x, y_raw + map.position.y)
+	var uv = Vector2((car_pos.x - topleftcorner.x) / totalWidth, (car_pos.y - topleftcorner.y) / totalHeight)
+	
+	return Vector2(uv.x * map.size.x, uv.y * map.size.y)
 
 func grabDimensions():
-	var mostleft = 0
-	var mostright = 0
-	var mosttop = 0
-	var mostbottom = 0
-	for tile in tilemaps.get_children():
-		var rect = tile.get_used_rect()
-		if(mostleft > rect.position.x):
-			mostleft = rect.position.x
-		if(mostbottom > rect.position.y):
-			mostbottom = rect.position.y
-		if(mostright < rect.end.x):
-			mostright = rect.end.x
-		if(mosttop < rect.end.y):
-			mosttop = rect.end.y
+	var mostleft = null
+	var mostright = null
+	var mosttop = null
+	var mostbottom = null
+	for tilemap in tilemaps.get_children():
+		var map_rect = tilemap.get_used_rect()
+		
+		# proceeds to perform the gayest ass coordinate space transformation
+		var start = tilemap.to_global(tilemap.map_to_local(map_rect.position) - (0.5*tilemap.tile_set.tile_size))
+		var end = tilemap.to_global(tilemap.map_to_local(map_rect.end) - (0.5*tilemap.tile_set.tile_size))
+		print(end)
+		
+		if(!mostleft || mostleft > start.x):
+			mostleft = start.x
+		if(!mosttop || mosttop > start.y):
+			mosttop = start.y
+		if(!mostright || mostright < end.x):
+			mostright = end.x
+		if(!mostbottom || mostbottom < end.y):
+			mostbottom = end.y
+			
+	print(mostright)
 	totalWidth = mostright - mostleft
 	totalHeight = mosttop - mostbottom
 	if(totalWidth > totalHeight):
 		totalHeight = totalWidth
 	elif(totalHeight > totalWidth):
 		totalWidth = totalHeight
-	center = Vector2(mostleft + (totalWidth / 2), mostbottom + (totalHeight / 2))
+	topleftcorner = Vector2(mostleft, mosttop)
