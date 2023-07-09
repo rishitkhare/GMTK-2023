@@ -29,7 +29,7 @@ func _process(_delta):
 	
 	if to_slot:
 		position += 0.06 * (slot_position - position)
-		modulate = Color(modulate.r + 0.1, modulate.r + 0.1, modulate.r + 0.1, modulate.a)
+		modulate = Color(modulate.r + 0.1, modulate.r + 0.1, modulate.r + 0.1, modulate.a - 0.03)
 		to_slot_frame -= 1
 		if (slot_position - position).length_squared() < 5 && to_slot_frame < 1:
 			match(selected.text):
