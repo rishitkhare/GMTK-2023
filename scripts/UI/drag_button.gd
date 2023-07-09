@@ -18,6 +18,15 @@ func _input(event):
 			if (position - slot_position).length_squared() < 5625:
 				dragging = false
 				to_slot = true
+				match(selected.text):
+					"Speed up!":
+						GameManager.add_instruct(GameManager.INSTRUCTION.S_UP)
+					"Turn left!":
+						GameManager.add_instruct(GameManager.INSTRUCTION.TURN_L)
+					"Stop!":
+						GameManager.add_instruct(GameManager.INSTRUCTION.S_DN)
+					"Turn right!":
+						GameManager.add_instruct(GameManager.INSTRUCTION.TURN_R)
 				to_slot_frame = 20
 			else:
 				stop_dragging()
@@ -32,15 +41,6 @@ func _process(_delta):
 		modulate = Color(modulate.r + 0.1, modulate.r + 0.1, modulate.r + 0.1, modulate.a - 0.03)
 		to_slot_frame -= 1
 		if (slot_position - position).length_squared() < 5 && to_slot_frame < 1:
-			match(selected.text):
-				"Speed up!":
-					GameManager.add_instruct(GameManager.INSTRUCTION.S_UP)
-				"Turn left!":
-					GameManager.add_instruct(GameManager.INSTRUCTION.TURN_L)
-				"Stop!":
-					GameManager.add_instruct(GameManager.INSTRUCTION.S_DN)
-				"Turn right!":
-					GameManager.add_instruct(GameManager.INSTRUCTION.TURN_R)
 			stop_dragging()
 			modulate = Color(1,1,1,1)
 			to_slot = false

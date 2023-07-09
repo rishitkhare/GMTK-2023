@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ph2gwqeny1g4"]
+[gd_scene load_steps=2 format=3 uid="uid://bno8yv3xkhcfx"]
 
-[ext_resource type="TileSet" uid="uid://cuplpmedyo3y" path="res://tilesets/mod_city_tileset.tres" id="1_h5u2v"]
+[ext_resource type="TileSet" uid="uid://b7ibo2dx64pj3" path="res://tilesets/mod_city_tileset.tres" id="1_h5u2v"]
 
 [node name="BergerDest" type="Node2D"]
 

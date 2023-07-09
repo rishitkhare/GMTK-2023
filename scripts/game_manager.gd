@@ -8,6 +8,10 @@ signal level_reset
 @onready var camera : Camera2D
 @onready var instructs = []
 @onready var rage = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	randomize()
 	
 func register_car(_car : CharacterBody2D):
 	self.car = _car
@@ -33,6 +37,12 @@ func add_rage(_rage : float):
 	rage += _rage
 	rage = clampf(rage, 0, 1)
 	UI.get_node("RageMeter").set_rage_value(rage)
+
+func get_random_int(max_int_excl : int) -> int :
+	return randi() % max_int_excl
+	
+func get_random_float() -> float :
+	return randf()
 	
 
 func car_crashed():

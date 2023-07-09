@@ -16,15 +16,13 @@ func _ready():
 func _physics_process(delta):
 	if(area.overlaps_body(Player) && entered == false):
 		entered = true
-		print("entered")
+		print("entered stop")
 	elif(entered == true && !area.overlaps_body(Player)):
 		entered = false
-		print("exited")
+		print("exited stop")
 		if(StopTimer < StopTime):
 			GameManager.time_penalty(violationPenalty)
 		StopTimer = 0
 	elif(entered == true && Player.mvelocity.length() == 0):
 		StopTimer += delta
-	elif(entered == true && Player.mvelocity.length() != 0):
-		StopTimer = 0
 	
