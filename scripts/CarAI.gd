@@ -2,13 +2,15 @@ extends CharacterBody2D
 enum mSTATE {IDLE, WAITING, EXECUTING}
 enum tSTATE {PRE, LEG1, LEG2, NONE}
 
-@export var waitTimeMid : float = 1.0
+@export var minRageWaitTime : float = 1.0
 @export var waitTimeVar : float = 0.2
 @export var speedUpAmt : float = 0.0
 @export var speedDnAmt : float = 0.0
 @export var startDir : Vector2 = Vector2(0, 0)
 @export var incorTurnPenalty : float = 10
 @export var turnDistance : float = 100
+
+@onready var waitTimeMid : float = 1.0
 @onready var rng = RandomNumberGenerator.new()
 @onready var timer : float = 0.0
 @onready var curInst : GameManager.INSTRUCTION
@@ -65,8 +67,8 @@ func _physics_process(delta):
 	self.position.x += mvelocity.x
 	self.position.y += mvelocity.y	
 	#update range stuff
-	waitTimeMid = 1 + GameManager.rage*2
-	waitTimeVar = GameManager.rage*2
+	waitTimeMid = minRageWaitTime + GameManager.rage
+	waitTimeVar = GameManager.rage*0.4
 	speedUpAm = speedUpAmt + speedUpAmt*GameManager.rage
 	speedDnAm = speedDnAmt - speedDnAmt*GameManager.rage
 
@@ -127,10 +129,8 @@ func getCollisionState() -> int:
 func add_turn_rage(good : int) -> float:
 	match(good):
 		0:
-			print("turn missed")
 			return 0.2
 		1:
-			print("turn missed")
 			return 0.1
 		2:
 			return 0.0

@@ -43,4 +43,4 @@ offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.141176, 1)
 theme_override_fonts/font = SubResource("FontVariation_qw1ye")
 theme_override_font_sizes/font_size = 8
-text = "Rage level"
+text = "Driver Rage Level"

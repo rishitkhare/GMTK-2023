@@ -6,6 +6,8 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="DriverControls" parent="." instance=ExtResource("1_el0ga")]
+offset_left = 1.0
+offset_right = 1.0
 
 [node name="RageMeter" parent="." instance=ExtResource("2_ks64c")]
 anchors_preset = 0
