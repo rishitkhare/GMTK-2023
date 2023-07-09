@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmwccrwq2oq5g"]
+[gd_scene load_steps=6 format=3 uid="uid://bmwccrwq2oq5g"]
 
 [ext_resource type="Theme" uid="uid://1c3l57x5tw85" path="res://UI-Resources/pixel-ui-theme.tres" id="1_gmxt7"]
 [ext_resource type="PackedScene" uid="uid://cgoav5v41i3j3" path="res://Scenes/UI/button.tscn" id="2_gsxab"]
 [ext_resource type="StyleBox" uid="uid://hh20hea1wtu6" path="res://UI-Resources/9rects/slot-9rect.tres" id="4_krxn7"]
+[ext_resource type="FontFile" uid="uid://cr0gjts74qlqj" path="res://UI-Resources/font/AtariSmall.ttf" id="4_wruu8"]
+
+[sub_resource type="FontVariation" id="FontVariation_j4mv5"]
+base_font = ExtResource("4_wruu8")
+variation_embolden = 0.72
 
 [node name="DriverControls" type="Control"]
 layout_mode = 3
@@ -21,20 +26,20 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -84.0
-offset_right = -6.0
-offset_bottom = -10.0
+offset_left = 41.45
+offset_top = -36.0
+offset_right = -40.55
+offset_bottom = -2.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -75,13 +80,38 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_bottom = 52.0
+offset_left = -68.0
+offset_right = 67.0
+offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_styles/panel = ExtResource("4_krxn7")
 
 [node name="Anchor" type="Control" parent="Slot"]
-anchors_preset = 0
-offset_left = 58.45
-offset_top = 27.0
-offset_right = 208.45
-offset_bottom = 177.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.45
+offset_top = 19.0
+offset_right = 81.45
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Slot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.45
+offset_top = 9.0
+offset_right = -7.55
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.141176, 1)
+theme_override_fonts/font = SubResource("FontVariation_j4mv5")
+theme_override_font_sizes/font_size = 8
+text = "What do I tell the driver...?
+(drag and drop)"
+horizontal_alignment = 1

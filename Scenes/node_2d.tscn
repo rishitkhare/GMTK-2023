@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://0e5id6mu7pi4"]
+[gd_scene load_steps=6 format=3 uid="uid://0e5id6mu7pi4"]
 
 [ext_resource type="Texture2D" uid="uid://d2htuvqdsc872" path="res://icon.svg" id="2_mmqa1"]
 [ext_resource type="Script" path="res://scripts/camera_movement.gd" id="2_wd542"]
 [ext_resource type="PackedScene" uid="uid://bdrd5tjf7acox" path="res://Scenes/character_player.tscn" id="3_fqveo"]
-[ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="6_60xil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_str0n"]
 texture = ExtResource("2_mmqa1")
@@ -282,7 +281,3 @@ script = ExtResource("2_wd542")
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_fqveo")]
 position = Vector2(-162, -380)
 movement_setting = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DriverControls" parent="CanvasLayer" instance=ExtResource("6_60xil")]
