@@ -46,7 +46,7 @@ func _physics_process(delta):
 			if(getCollisionState() == 0):
 				tstate = tSTATE.LEG1
 				if(curInst == GameManager.INSTRUCTION.TURN_L):
-					temp = temp * 2.3
+					temp = temp * 2.2
 		if(tstate == tSTATE.LEG1):
 			temp -= delta
 			if(temp <= 0):
