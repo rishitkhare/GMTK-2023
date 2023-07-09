@@ -2,6 +2,8 @@ extends Node
 
 enum INSTRUCTION {IDLE, S_UP, S_DN, TURN_R, TURN_L}
 
+signal level_reset
+
 @onready var car : CharacterBody2D
 @onready var camera : Camera2D
 @onready var instructs = []
@@ -33,4 +35,7 @@ func add_rage(_rage : float):
 	UI.get_node("RageMeter").set_rage_value(rage)
 	
 
+func car_crashed():
+	print("reset level")
+	emit_signal("level_reset")
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5blmo2b283be"]
+[gd_scene load_steps=11 format=3 uid="uid://5blmo2b283be"]
 
 [ext_resource type="PackedScene" uid="uid://ctlefud45om14" path="res://Scenes/car.tscn" id="1_2gr7a"]
 [ext_resource type="PackedScene" uid="uid://bl626g7ea8wkn" path="res://Scenes/common_tilemaps/intersection_tilemap.tscn" id="2_d371e"]
 [ext_resource type="SpriteFrames" uid="uid://b6aumqw1ce52l" path="res://art/npcSpriteFrames.tres" id="3_hp4ni"]
+[ext_resource type="Script" path="res://Scenes/pedestrian.gd" id="4_jdkfk"]
 
 [sub_resource type="GDScript" id="GDScript_r2mvg"]
 script/source = "extends Camera2D
@@ -28,16 +29,104 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fgw8"]
 size = Vector2(327.273, 144)
 
+[sub_resource type="Animation" id="Animation_c61hk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_nyiby"]
+resource_name = "Walk"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2.2, 4.2, 6.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-1, 0), Vector2(1, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-429, -0.25, 0, 0.25, 0, -527, -0.25, 0, 0.25, 0, -527, -0.25, 0, 0.25, 0, -429, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 2.2, 4.2, 6.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lteog"]
+_data = {
+"RESET": SubResource("Animation_c61hk"),
+"Walk": SubResource("Animation_nyiby")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4aj6"]
+size = Vector2(8, 12)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Car" parent="." instance=ExtResource("1_2gr7a")]
 z_index = 1
-position = Vector2(-457, 366)
+position = Vector2(-457, -209)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-475, -114)
+enabled = false
 script = SubResource("GDScript_r2mvg")
 
 [node name="Node2D" parent="." instance=ExtResource("2_d371e")]
@@ -52,7 +141,26 @@ rotation = -3.14159
 scale = Vector2(0.44, -1)
 shape = SubResource("RectangleShape2D_7fgw8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-395, -163)
+[node name="Pedestrian" type="AnimatedSprite2D" parent="."]
+position = Vector2(-528, -209)
 sprite_frames = ExtResource("3_hp4ni")
-animation = &"01_idle"
+animation = &"01_idle_side"
+offset = Vector2(0, -9)
+script = ExtResource("4_jdkfk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pedestrian"]
+autoplay = "Walk"
+libraries = {
+"": SubResource("AnimationLibrary_lteog")
+}
+
+[node name="Area2D" type="Area2D" parent="Pedestrian"]
+position = Vector2(-1, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pedestrian/Area2D"]
+shape = SubResource("RectangleShape2D_s4aj6")
+
+[node name="DebugCam" type="Camera2D" parent="."]
+position = Vector2(-463, -217)
+
+[connection signal="body_entered" from="Pedestrian/Area2D" to="Pedestrian" method="_on_area_2d_body_entered"]
