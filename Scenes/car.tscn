@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d2htuvqdsc872" path="res://icon.svg" id="2_wnks0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsncy"]
+size = Vector2(120, 63)
 
 [node name="Car" type="CharacterBody2D"]
 script = ExtResource("1_qp5hl")
@@ -12,12 +13,12 @@ speedDnAmt = 0.3
 startDir = Vector2(0, -1)
 turnDistance = 1.05
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-30, 30)
-shape = SubResource("RectangleShape2D_jsncy")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wnks0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_jsncy")
 
 [node name="Raycasts" type="Node2D" parent="."]
 
