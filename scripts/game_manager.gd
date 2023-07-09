@@ -39,5 +39,8 @@ func add_rage(_rage : float):
 func get_random_int(max_int_excl : int) -> int :
 	return randi() % max_int_excl
 	
+func get_random_float() -> float :
+	return randf()
+	
 
 

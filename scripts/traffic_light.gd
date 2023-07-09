@@ -15,36 +15,34 @@ enum LIGHT_STATES {
 	LIGHT_STATES.YELLOW_LIGHT : yellow_light_texture,
 	LIGHT_STATES.RED_LIGHT : red_light_texture
 }
-@onready var LIGHT_TIMINGS = {
-	LIGHT_STATES.GREEN_LIGHT : 4,
+@export var LIGHT_TIMINGS = {
+	LIGHT_STATES.GREEN_LIGHT : 3,
 	LIGHT_STATES.YELLOW_LIGHT : 2,
 	LIGHT_STATES.RED_LIGHT : 3
 }
+@onready var light_state_timer : float
 
-@onready var player = GameManager.car
-@onready var area = $Area2D
-@onready var need_to_stop = false
-@export var red_light_violation_penalty : float = 110
+@onready var car = GameManager.car
+@onready var obstruction_area = $ObstructionArea
+@onready var punished = false
+@export var traffic_light_violation : float = 110
 @export var added_rage : float = 0.25
-
-@onready var light_state_timer : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var starting_texture
-	if GameManager.get_random_int(2):
-		$Sprite2D.set_texture(LIGHT_TEXTURES.get(LIGHT_STATES.GREEN_LIGHT))
-	else:
-		$Sprite2D.set_texture(LIGHT_TEXTURES.get(LIGHT_STATES.RED_LIGHT))
-
-
+	light_state = LIGHT_STATES.GREEN_LIGHT if GameManager.get_random_int(2) \
+										   else LIGHT_STATES.RED_LIGHT
+	$Sprite2D.set_texture(LIGHT_TEXTURES.get(light_state))
+	light_state_timer = GameManager.get_random_float() * LIGHT_TIMINGS.get(light_state)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if area.overlaps_body(player) and light_state == LIGHT_STATES.RED_LIGHT:
-		need_to_stop = true
-	if need_to_stop and not area.overlaps_body(player):
-		GameManager.time_penalty(red_light_violation_penalty)
-		GameManager.add_rage(added_rage)
+	if not punished and obstruction_area.overlaps_body(car):
+		if light_state == LIGHT_STATES.RED_LIGHT or car.mvelocity == Vector2.ZERO:
+			GameManager.time_penalty(traffic_light_violation)
+			GameManager.add_rage(added_rage)
+			punished = true
 	
 	if light_state_timer >= LIGHT_TIMINGS.get(light_state):
 		light_state_timer = 0
