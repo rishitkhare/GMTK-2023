@@ -110,8 +110,12 @@ position = Vector2(-1, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_s4aj6")
 
-[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
-position = Vector2(-1, -4)
+[node name="uppercast" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(-1, -8)
+target_position = Vector2(-50, 0)
+
+[node name="lowercast" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(-1, 0)
 target_position = Vector2(-50, 0)
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D" method="_on_area_2d_body_entered"]

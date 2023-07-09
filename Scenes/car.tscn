@@ -20,34 +20,28 @@ texture = ExtResource("2_wnks0")
 position = Vector2(0, -31.5)
 shape = SubResource("RectangleShape2D_jsncy")
 
-[node name="Raycasts" type="Node2D" parent="."]
-
-[node name="Farther" type="RayCast2D" parent="Raycasts"]
+[node name="Farther" type="RayCast2D" parent="."]
 position = Vector2(-12, -47)
 target_position = Vector2(0, -275)
+collide_with_areas = true
+
+[node name="Closer" type="RayCast2D" parent="."]
+position = Vector2(15, -2)
+target_position = Vector2(0, -58)
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="Closer" type="RayCast2D" parent="Raycasts"]
-position = Vector2(13, 12)
-target_position = Vector2(0, -76)
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="Anger1" type="RayCast2D" parent="Raycasts"]
+[node name="Anger1" type="RayCast2D" parent="."]
 position = Vector2(-4, -62)
 target_position = Vector2(0, -212)
-hit_from_inside = true
 collide_with_areas = true
 
-[node name="Anger2" type="RayCast2D" parent="Raycasts"]
+[node name="Anger2" type="RayCast2D" parent="."]
 position = Vector2(1, -62)
 target_position = Vector2(0, -142)
-hit_from_inside = true
 collide_with_areas = true
 
-[node name="Anger3" type="RayCast2D" parent="Raycasts"]
+[node name="Anger3" type="RayCast2D" parent="."]
 position = Vector2(6, -62)
 target_position = Vector2(0, -76)
-hit_from_inside = true
 collide_with_areas = true

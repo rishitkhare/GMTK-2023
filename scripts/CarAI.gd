@@ -17,11 +17,11 @@ enum tSTATE {PRE, LEG1, LEG2, NONE}
 @onready var curDir : Vector2 = startDir
 @onready var mvelocity : Vector2 = Vector2(0,0)
 @onready var state : mSTATE = mSTATE.IDLE
-@onready var rc_f : RayCast2D = $Raycasts/Farther
-@onready var rc_c : RayCast2D = $Raycasts/Closer
-@onready var a1 : RayCast2D = $Raycasts/Anger1
-@onready var a2 : RayCast2D = $Raycasts/Anger2
-@onready var a3 : RayCast2D = $Raycasts/Anger3
+@onready var rc_f : RayCast2D = $Farther
+@onready var rc_c : RayCast2D = $Closer
+@onready var a1 : RayCast2D = $Anger1
+@onready var a2 : RayCast2D = $Anger2
+@onready var a3 : RayCast2D = $Anger3
 @onready var temp : float = 0
 @onready var tstate : tSTATE = tSTATE.NONE
 @onready var speedUpAm  : float = speedUpAmt
@@ -46,7 +46,7 @@ func _physics_process(delta):
 			if(getCollisionState() == 0):
 				tstate = tSTATE.LEG1
 				if(curInst == GameManager.INSTRUCTION.TURN_L):
-					temp = temp * 1.7
+					temp = temp * 2.3
 		if(tstate == tSTATE.LEG1):
 			temp -= delta
 			if(temp <= 0):
@@ -129,16 +129,22 @@ func getCollisionState() -> int:
 func add_turn_rage(good : int) -> float:
 	match(good):
 		0:
-			return 0.2
+			print("gone too far")
+			return 0.15
 		1:
-			return 0.1
+			print("anger (high)")
+			return 0.15
 		2:
-			return 0.0
-		3: 
-			return 0.0
-		4:
+			print("anger (med)")
 			return 0.1
+		3: 
+			print("anger (low)")
+			return 0.05
+		4:
+			print("perfect!")
+			return -0.1
 		5:
+			print("there's nowhere to turn!")
 			return 0.2
 			
 	push_error("defaulted match statement")

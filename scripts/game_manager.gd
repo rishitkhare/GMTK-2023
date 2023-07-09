@@ -33,7 +33,6 @@ func time_penalty(penalty : float):
 	print("penalty")
 	
 func add_rage(_rage : float):
-	print("rage added " + str(_rage))
 	rage += _rage
 	rage = clampf(rage, 0, 1)
 	UI.get_node("RageMeter").set_rage_value(rage)
