@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://di8fdqfuj83fj"]
+[gd_scene load_steps=3 format=3 uid="uid://citnxiqipcaid"]
 
 [ext_resource type="PackedScene" uid="uid://bmwccrwq2oq5g" path="res://Scenes/UI/UI_buttons.tscn" id="1_el0ga"]
 [ext_resource type="PackedScene" uid="uid://bm5fq4p2i6skg" path="res://Scenes/UI/RageMeter.tscn" id="2_ks64c"]
